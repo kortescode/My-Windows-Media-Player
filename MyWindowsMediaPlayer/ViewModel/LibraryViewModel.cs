@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using MyWindowsMediaPlayer.Model;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -9,7 +8,6 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Windows.Forms;
 using MyWindowsMediaPlayer.Dialog;
-using GalaSoft.MvvmLight.Command;
 
 namespace MyWindowsMediaPlayer.ViewModel
 {

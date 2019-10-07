@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Collections.ObjectModel;
 using MyWindowsMediaPlayer.Model;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Xml;
 using System.Windows.Input;
 using MyWindowsMediaPlayer.Dialog;
 

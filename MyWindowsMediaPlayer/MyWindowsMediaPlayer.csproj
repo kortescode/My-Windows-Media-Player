@@ -226,15 +226,6 @@
     <Resource Include="Image\App\repeat_one_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Config\playlists.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Config\musics.xml" />
-    <Resource Include="Config\paths.xml" />
-    <Resource Include="Config\pictures.xml" />
-    <Resource Include="Config\videos.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Image\App\music_folder.png" />
   </ItemGroup>
   <ItemGroup>
