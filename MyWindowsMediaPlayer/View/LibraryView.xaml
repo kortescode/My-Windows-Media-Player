@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="MyWindowsMediaPlayer.View.LibraryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+             mc:Ignorable="d" d:DesignHeight="375" d:DesignWidth="550">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+    </UserControl.Resources>
+    
+    <Grid Background="Black">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Border BorderBrush="White" BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" Grid.RowSpan="4" Name="border1" Background="White"/>
+        
+        <TextBlock Name="textBlock1" Text="Library" FontSize="33" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+
+        <ListView Name="LibraryType" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType, Mode=TwoWay}" SelectedValue="" BorderBrush="White" BorderThickness="0" Cursor="Hand">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding ViewSelectedTypeCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListView>
+
+            <Image Source="{Binding ImageGridSource}" Height="256" Width="256" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0, 0, 25, -15" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
+
+        <DataGrid IsReadOnly="True" GridLinesVisibility="None" AllowDrop="True" Drop="MusicsGrid_Drop" SelectionMode="Single" HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Name="MusicsGrid" Background="Transparent" RowBackground="Transparent" ItemsSource="{Binding Musics}" SelectedItem="{Binding SelectedMedia, Mode=TwoWay}" Visibility="{Binding Path=IsMusicsGridVisible, Converter={StaticResource VisibilityConverter}}" Foreground="White" Style="{DynamicResource DataGridStyle4}">
+                <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Play" Command="{Binding PlaySelectedMediaCommand}"/>
+                    <MenuItem Header="Modify" Command="{Binding ModifyCommand}"/>
+                    <MenuItem Header="Delete" Command="{Binding DelFromLibraryCommand}"/>
+                    <MenuItem Header="Add To Playlist" Command="{Binding AddToPlaylistSelectedCommand}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Width="0.35*" Binding="{Binding Title}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Artist" Width="0.20*" Binding="{Binding Artist}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Album" Width="0.20*" Binding="{Binding Album}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Genre" Width="0.15*" Binding="{Binding Genre}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Year" Width="0.10*" Binding="{Binding Year}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding PlaySelectedMediaCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+
+        <DataGrid IsReadOnly="True" GridLinesVisibility="None" AllowDrop="True" Drop="VideosGrid_Drop" SelectionMode="Single" HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Name="VideosGrid" Background="Transparent" RowBackground="Transparent" ItemsSource="{Binding Videos}" SelectedItem="{Binding SelectedMedia, Mode=TwoWay}" Visibility="{Binding Path=IsVideosGridVisible, Converter={StaticResource VisibilityConverter}}" Foreground="White" Style="{DynamicResource DataGridStyle4}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Play" Command="{Binding PlaySelectedMediaCommand}"/>
+                    <MenuItem Header="Modify" Command="{Binding ModifyCommand}"/>
+                    <MenuItem Header="Delete" Command="{Binding DelFromLibraryCommand}"/>
+                    <MenuItem Header="Add To Playlist" Command="{Binding AddToPlaylistSelectedCommand}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Width="0.35*" Binding="{Binding Title}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Actor" Width="0.20*" Binding="{Binding Actor}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Director" Width="0.20*" Binding="{Binding Director}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Genre" Width="0.15*" Binding="{Binding Genre}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Year" Width="0.10*" Binding="{Binding Year}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding PlaySelectedMediaCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+
+        <DataGrid IsReadOnly="True" GridLinesVisibility="None" AllowDrop="True" Drop="PicturesGrid_Drop" SelectionMode="Single" HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Name="PicturesGrid" Background="Transparent" RowBackground="Transparent" ItemsSource="{Binding Pictures}" SelectedItem="{Binding SelectedMedia, Mode=TwoWay}" Visibility="{Binding Path=IsPicturesGridVisible, Converter={StaticResource VisibilityConverter}}" Foreground="White" Style="{DynamicResource DataGridStyle4}" >
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Play" Command="{Binding PlaySelectedMediaCommand}"/>
+                    <MenuItem Header="Modify" Command="{Binding ModifyCommand}"/>
+                    <MenuItem Header="Delete" Command="{Binding DelFromLibraryCommand}"/>
+                    <MenuItem Header="Add To Playlist" Command="{Binding AddToPlaylistSelectedCommand}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Width="0.40*" Binding="{Binding Title}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Author" Width="0.25*" Binding="{Binding Author}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Genre" Width="0.25*" Binding="{Binding Genre}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+                <DataGridTextColumn Header="Year" Width="0.10*" Binding="{Binding Year}" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"/>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding PlaySelectedMediaCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+
+    </Grid>
+</UserControl>
