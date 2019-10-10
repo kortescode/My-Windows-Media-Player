@@ -1,4 +1,4 @@
-# My Windows Media Player
+# My Windows Media Player [![Build Status](https://travis-ci.org/kortescode/My-Windows-Media-Player.svg?branch=master)](https://travis-ci.org/kortescode/My-Windows-Media-Player)
  
 My Windows Media Player is a C# executable (Exe). It's a tiny media player and media library application.
 
