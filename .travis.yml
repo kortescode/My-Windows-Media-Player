@@ -1,3 +1,2 @@
-language: ocaml
-install: sudo apt-get update && sudo apt-get install -y ocaml-nox menhir
-script: make all
+language: csharp
+solution: MyWindowsMediaPlayer.sln
